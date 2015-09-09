@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function profile {
+  local shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  PATH="$shome/bin:$shome/exec:$shome/.rbenv/bin:$shome/.ruby-build/bin:$PATH"
+
+  if [[ -x "$(which rbenv 2>&- || true)" ]]; then
+    export RBENV_ROOT="$shome/.rbenv"
+    eval "$(rbenv init -)"
+  fi
+}
+
+profile

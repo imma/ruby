@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+
+  git clone git@github.com:sstephenson/rbenv.git "$shome/.rbenv"
+  git clone git@github.com:sstephenson/ruby-build.git "$shome/.ruby-build"
+  source "$shome/script/profile"
+}
+
+bootstrap
