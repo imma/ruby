@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local phome="$1"; shift
+
+  if [[ -f "$phome/Gemfile" ]]; then
+    return 0
+  fi
+
+  echo "WARNING: Gemfile not found" 1>&2
+  return 1
+}
+
+source sub "$0" "$@"
