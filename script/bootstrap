@@ -8,6 +8,7 @@ function bootstrap {
   source "$shome/script/profile"
 
   rbenv install "$RBENV_VERSION"
+  gem install bundler
 }
 
 bootstrap
