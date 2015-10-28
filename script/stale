@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  if [[ "$(rbenv version | awk '{print $1}')" == "$RBENV_VERSION" ]]; then
+  if [[ "$(rbenv version 2>&- | awk '{print $1}')" == "$RBENV_VERSION" ]]; then
     return 1
   else
     return 0
