@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
   if [[ "$(rbenv version 2>&- | awk '{print $1}')" == "$RBENV_VERSION" ]]; then
     return 1
   else
