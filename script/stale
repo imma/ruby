@@ -4,6 +4,10 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
+  if [[ -z "${RBENV_VERSION:-}" ]]; then
+    return 0
+  fi
+
   if [[ "$(rbenv version 2>&- | awk '{print $1}')" == "$RBENV_VERSION" ]]; then
     return 1
   else
