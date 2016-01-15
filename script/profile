@@ -8,6 +8,9 @@ function profile {
     export RBENV_ROOT="$shome/.rbenv"
     eval "$(rbenv init -)"
   fi
+
+  local pth_cache="${BASEBOX_CACHE:-$shome}"
+  export RUBY_BUILD_CACHE_PATH="$pth_cache/cache/ruby"
 }
 
 profile
