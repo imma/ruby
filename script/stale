@@ -9,7 +9,7 @@ function main {
   fi
 
 
-  if [[ -x "$shome/.rbenv/versions/${RBENV_VERSION}/bin/ruby" ]] then
+  if [[ -x "$shome/.rbenv/versions/${RBENV_VERSION}/bin/ruby" ]]; then
     return 1
   else
     return 0
