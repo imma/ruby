@@ -8,7 +8,8 @@ function main {
     return 0
   fi
 
-  if [[ "$(rbenv version 2>&- | awk '{print $1}')" == "$RBENV_VERSION" ]]; then
+
+  if [[ -x "$shome/.rbenv/versions/${RBENV_VERSION}/bin/ruby" ]] then
     return 1
   else
     return 0
