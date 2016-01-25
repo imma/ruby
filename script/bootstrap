@@ -15,7 +15,7 @@ function bootstrap {
   case "$(uname -s)" in
     Linux)
       sudo aptitude update
-      sudo aptitude install -y libffi-dev libssl-dev libreadline-dev build-essentials # TODO belongs in a build block
+      sudo aptitude install -y libffi-dev libssl-dev libreadline-dev build-essential # TODO belongs in a build block
       ;;
   esac
 
