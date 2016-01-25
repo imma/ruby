@@ -12,13 +12,6 @@ function bootstrap {
     return 0
   fi
 
-  case "$(uname -s)" in
-    Linux)
-      sudo aptitude update
-      sudo aptitude install -y libffi-dev libssl-dev libreadline-dev build-essential # TODO belongs in a build block
-      ;;
-  esac
-
   export RUBY_CONFIGURE_OPTS=--disable-install-doc 
   rbenv install "$RBENV_VERSION"
   gem install bundler
