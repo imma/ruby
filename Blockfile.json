@@ -1,5 +1,6 @@
 {
   "require": [
-    "basebox-cache"
+    "basebox-cache",
+    "build-essential"
   ]
 }
