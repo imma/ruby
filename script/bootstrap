@@ -15,6 +15,7 @@ function bootstrap {
   export RUBY_CONFIGURE_OPTS=--disable-install-doc 
   rbenv install "$RBENV_VERSION"
   gem install bundler
+  gem install bundler -v 1.10.6
 }
 
 bootstrap
