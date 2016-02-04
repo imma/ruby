@@ -12,8 +12,10 @@ function bootstrap {
     return 0
   fi
 
-  export RUBY_CONFIGURE_OPTS=--disable-install-doc 
-  env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' rbenv install "$RBENV_VERSION"
+  export RUBY_CONFIGURE_OPTS='--disable-install-doc --disable-dtrace' 
+  #env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' 
+
+  rbenv install "$RBENV_VERSION"
   gem install bundler
   gem install bundler -v 1.10.6
 }
