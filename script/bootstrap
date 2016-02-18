@@ -3,8 +3,8 @@
 function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
-  git clone git@github.com:sstephenson/rbenv.git "$shome/.rbenv"
-  git clone git@github.com:sstephenson/ruby-build.git "$shome/.ruby-build"
+  git clone git@github.com:rbenv/rbenv.git "$shome/.rbenv"
+  git clone git@github.com:rbenv/ruby-build.git "$shome/.ruby-build"
   source "$shome/script/profile"
 
   if [[ -z "${RBENV_VERSION:-}" ]]; then
