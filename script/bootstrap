@@ -7,15 +7,10 @@ function bootstrap {
   git clone git@github.com:rbenv/ruby-build.git "$shome/.ruby-build"
   source "$shome/script/profile"
 
-  if [[ -z "${RBENV_VERSION:-}" ]]; then
-    echo "WARN: RBENV_VERSION not defined, skip bootstrapping" 1>&2
-    return 0
-  fi
-
   export RUBY_CONFIGURE_OPTS='--disable-install-doc --disable-dtrace' 
   #env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' 
 
-  rbenv install "$RBENV_VERSION"
+  rbenv install
   gem install bundler
   gem install bundler -v 1.10.6
 }

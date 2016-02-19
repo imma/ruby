@@ -4,12 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if [[ -z "${RBENV_VERSION:-}" ]]; then
-    return 0
-  fi
-
-
-  if [[ -x "$shome/.rbenv/versions/${RBENV_VERSION}/bin/ruby" ]]; then
+  if [[ -x "$shome/.rbenv/versions/$(rbenv version | awk '{print $1}')/bin/ruby" ]]; then
     return 1
   else
     return 0
