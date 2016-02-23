@@ -13,6 +13,10 @@ function bootstrap {
   rbenv install
   gem install bundler
   gem install bundler -v 1.10.6
+
+  local pth_ruby_install="$(rbenv which ruby 2>/dev/null | perl -pe 's{/bin/ruby}{}')"
+  local id_ruby_install="$(echo "${ID_INSTALL%%__*}${pth_ruby_install}" | perl -pe 's{\s$}{}; s{\W+}{_}g')"
+  tar cvfz "$id_ruby_install.tar.gz" "$pth_ruby_install"
 }
 
 bootstrap
