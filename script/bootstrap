@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+function rbenv_version {
+  local ver_ruby="$(rbenv version-name 2>&1)"
+
+  case "$ver_ruby" in
+    *\ *)
+      ver_ruby="$(echo "$ver_ruby" | awk '{print $3}' | sed 's#`##' | sed "s#'##")"
+      ;;
+  esac
+
+  echo "$ver_ruby"
+}
+
 function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
@@ -10,13 +22,18 @@ function bootstrap {
   export RUBY_CONFIGURE_OPTS='--disable-install-doc --disable-dtrace' 
   #env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' 
 
-  rbenv install
-  gem install bundler
-  gem install bundler -v 1.10.6
-
-  local pth_ruby_install="$(rbenv which ruby 2>/dev/null | perl -pe 's{/bin/ruby}{}')"
+  local pth_ruby_install="${PWD}/.rbenv/versions/$(rbenv_version)"
   local id_ruby_install="$(echo "${ID_INSTALL%%__*}${pth_ruby_install}" | perl -pe 's{\s$}{}; s{\W+}{_}g')"
-  tar cvfz "$id_ruby_install.tar.gz" "$pth_ruby_install"
+  local pth_archive="${BASEBOX_CACHE}/packages/${id_ruby_install}.tar.gz"
+
+  if [[ -f "$pth_archive" ]]; then
+    (cd / && tar xvfz "$pth_archive")
+  else
+    rbenv install
+    gem install bundler
+    gem install bundler -v 1.10.6
+    tar cvfz "${BASEBOX_CACHE}/packages/$id_ruby_install.tar.gz" "$pth_ruby_install"
+  fi
 }
 
 bootstrap
