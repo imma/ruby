@@ -4,13 +4,15 @@ function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   PATH="$shome/bin:$shome/exec:$shome/.rbenv/bin:$shome/.ruby-build/bin:$PATH"
 
+  local pth_cache="${BASEBOX_CACHE:-$shome}"
+  export RUBY_BUILD_CACHE_PATH="$pth_cache/cache/ruby"
+
+  mkdir -p "${RUBY_BUILD_CACHE_PATH}"
+
   if [[ -x "$(which rbenv 2>&- || true)" && -z "${RBENV_ROOT:-}" ]]; then
     export RBENV_ROOT="$shome/.rbenv"
     eval "$(rbenv init -)"
   fi
-
-  local pth_cache="${BASEBOX_CACHE:-$shome}"
-  export RUBY_BUILD_CACHE_PATH="$pth_cache/cache/ruby"
 }
 
 profile
