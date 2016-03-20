@@ -1,6 +1,5 @@
 {
   "require": [
-    "cache",
-    "build-essential"
+    "rbenv"
   ]
 }

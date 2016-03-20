@@ -6,9 +6,9 @@ function main {
 
   if [[ -x "$shome/.rbenv/versions/$(rbenv version-name 2>/dev/null)/bin/ruby" ]]; then
     return 1
-  else
-    return 0
   fi
+
+  return 0
 }
 
 source sub "$0" "$@"
