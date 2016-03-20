@@ -4,8 +4,11 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if [[ -x "${RBENV_ROOT}/versions/$(rbenv version-name 2>/dev/null)/bin/ruby" ]]; then
-    return 1
+  set -x
+  if [[ "$(rbenv version-name 2>/dev/null)" == "$(ruby -e 'puts RUBY_VERSION')" ]]; then
+    if [[ -x "$(which bundle 2>/dev/null || true)" ]]; then
+      return 1
+    fi
   fi
 
   return 0
