@@ -27,9 +27,12 @@ function bootstrap {
     (cd / && tar xvfz "$pth_archive")
   else
     rbenv install
+    rbenv rehash
     gem install bundler
+    rbenv rehash
     gem install bundler -v 1.10.6
     tar cvfz "${BASEBOX_CACHE}/packages/$id_ruby_install.tar.gz" "$pth_ruby_install"
+    rbenv rehash
   fi
 }
 
