@@ -16,6 +16,7 @@ function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
+  set -x
   export RUBY_CONFIGURE_OPTS='--disable-install-doc --disable-dtrace' 
   #env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' 
 
