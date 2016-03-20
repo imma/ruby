@@ -4,7 +4,7 @@ function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   PATH="$shome/bin:$shome/exec:$PATH"
 
-  export RBENV_ROOT="$shome/.rbenv"
+  export RBENV_ROOT="$shome"
   eval "$(rbenv init -)"
 }
 
