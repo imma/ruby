@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function guess_version {
-  local ver_ruby="$(rbenv version-name 2>&1)"
+  local ver_ruby="$(rbenv version-name 2>&1 || true)"
   
   case "$ver_ruby" in
     rbenv:\ version*)
@@ -20,7 +20,7 @@ function bootstrap {
   export RUBY_CONFIGURE_OPTS='--disable-install-doc --disable-dtrace' 
   #env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' 
 
-  local pth_ruby_install="${RBENV_ROOT}/versions/$(rbenv version-name 2>/dev/null || true)"
+  local pth_ruby_install="${RBENV_ROOT}/versions/$(guess_version)"
   local id_ruby_install="$(echo "${ID_INSTALL%%__*}${pth_ruby_install}" | perl -pe 's{\s$}{}; s{\W+}{_}g')"
   local pth_archive="${BASEBOX_CACHE}/packages/${id_ruby_install}.tar.gz"
 
