@@ -22,7 +22,7 @@ function bootstrap {
   local ver_ruby="$(guess_version)"
 
   local pth_ruby_install="${RBENV_ROOT}/versions/${ver_ruby}"
-  local id_ruby_install="$(echo "${ID_INSTALL%%__*}${pth_ruby_install}" | perl -pe 's{\s$}{}; s{\W+}{_}g')"
+  local id_ruby_install="${ID_INSTALL}/$(echo "${pth_ruby_install}" | perl -pe 's{\s$}{}; s{\W+}{_}g')"
   local pth_archive="${BASEBOX_CACHE}/packages/${id_ruby_install}.tar.gz"
 
   if [[ -f "$pth_archive" ]]; then
