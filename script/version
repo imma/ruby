@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_ruby="$(ruby --version 2>&- | awk 'NR == 1 {print $1}')"
+  local ver_rbenv="$(rbenv --version 2>&- | awk 'NR == 1 {print $1}')"
+  local ver_rubybuild="$(ruby-build --version 2>&- | awk 'NR == 1 {print $1}')"
+  jq -n \
+    --arg ruby "$ver_ruby" \
+    --arg rbenv "$ver_rbenv" \
+    --arg rubybuild "$ver_rubybuild" \
+    '{ruby: $ruby, rbenv: $rbenv, "ruby-build": $rubybuild}'
+}
+
+version "$@"
