@@ -2,7 +2,9 @@
 
 function main {
   local phome="$1"; shift
-  bundle --path "$phome/vendor/bundle" --binstubs "$phome/vendor/bundle/bin"
+  shift; shift
+
+  bundle --path "$phome/vendor/bundle" --binstubs "$phome/vendor/bundle/bin" "$@"
 }
 
 source sub "$0" "$@"
