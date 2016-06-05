@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  local shome="${_ruby_home:-"$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"}"
   source "$shome/script/profile"
 
   if [[ "$(rbenv version-name 2>/dev/null)" == "$(ruby -e 'puts RUBY_VERSION')" ]]; then
