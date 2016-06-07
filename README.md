@@ -1,5 +1,1 @@
-Setup
-=====
-
-For bash, source `script/profile` to expose the ruby commands.
-Requires the `defn/app` project installed and sourced.
+Visit http://defn.sh/ruby/ or open `docs/index.html`
