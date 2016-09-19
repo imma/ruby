@@ -5,15 +5,11 @@ function version {
   source "$shome/script/profile"
 
   local ver_ruby="$(ruby --version 2>/dev/null | awk 'NR == 1 {print $2}')"
-  local ver_rbenv="$(rbenv --version 2>/dev/null | awk 'NR == 1 {print $2}')"
-  local ver_rubybuild="$(ruby-build --version 2>/dev/null | awk 'NR == 1 {print $2}')"
   local ver_bundler="$(bundle --version 2>/dev/null | awk 'NR == 1 {print $3}')"
   jq -n \
     --arg ruby "$ver_ruby" \
-    --arg rbenv "$ver_rbenv" \
-    --arg rubybuild "$ver_rubybuild" \
     --arg bundler "$ver_bundler" \
-    '{ruby: $ruby, rbenv: $rbenv, "ruby-build": $rubybuild, bundler: $bundler}'
+    '{ruby: $ruby, bundler: $bundler}'
 }
 
 version "$@"

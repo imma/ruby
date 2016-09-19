@@ -1,7 +1,6 @@
 {
   "require": [
     "build-essential",
-    "rbenv",
     "pkgsrc"
   ]
 }

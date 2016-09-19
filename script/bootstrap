@@ -1,39 +1,11 @@
 #!/usr/bin/env bash
 
-function guess_version {
-  local ver_ruby="$(rbenv version-name 2>&1 || true)"
-  
-  case "$ver_ruby" in
-    rbenv:\ version*)
-      ver_ruby="$(echo "$ver_ruby" | awk '{print $3}' | cut -b2- | cut -d"'" -f1)"
-      ;;
-  esac
-
-  echo "$ver_ruby"
-}
-
 function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  export RUBY_CONFIGURE_OPTS='--disable-install-doc --disable-dtrace' 
-  #env DTRACE_DRTI_O='/usr/lib/dtrace/64/drti.o' 
-
-  local ver_ruby="$(guess_version)"
-
-  local pth_ruby_install="${RBENV_ROOT}/versions/${ver_ruby}"
-  local id_ruby_install="${ID_INSTALL}/$(echo "${pth_ruby_install}" | perl -pe 's{\s$}{}; s{\W+}{_}g')"
-  local pth_archive="${BASEBOX_CACHE}/packages/${id_ruby_install}.tar.gz"
-
-  if [[ -f "$pth_archive" ]]; then
-    (cd / && tar xvfz "$pth_archive")
-    rbenv rehash
-  else
-    rbenv install "$ver_ruby"
-    eval "$(rbenv init -)"
-    gem install bundler
-    tar cvfz "${BASEBOX_CACHE}/packages/$id_ruby_install.tar.gz" "$pth_ruby_install"
-  fi
+  pkg ensure lang/ruby22
+  gem install bundler
 }
 
 bootstrap

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  exec "${BASH_SOURCE##*/}"22 "$@"
+}
+
+main "$@"
