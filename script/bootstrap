@@ -4,7 +4,9 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  pkg ensure lang/ruby22
+  pkg ensure lang/ruby22-base
+  pkg ensure lang/ruby22-gdbm
+  pkg ensure lang/ruby22-readline
   gem install bundler
 }
 
