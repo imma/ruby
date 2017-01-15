@@ -8,7 +8,7 @@ function bootstrap {
   pkg ensure lang/ruby22-base
   pkg ensure ruby22-gdbm databases/ruby-gdbm
   pkg ensure ruby22-readline devel/ruby-readline
-  gem install bundler
+  (unset http_proxy https_proxy; gem install bundler)
 }
 
 bootstrap
