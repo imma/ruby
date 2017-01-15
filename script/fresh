@@ -8,6 +8,10 @@ function main {
     return 1
   fi
 
+  if [[ !  -x "$(which bundle 2>/dev/null || true)" ]]; then
+    return 1
+  fi
+
   return 0
 }
 
