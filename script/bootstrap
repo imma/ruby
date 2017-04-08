@@ -5,9 +5,9 @@ function bootstrap {
   source "$shome/script/profile"
 
   set -x
-  pkg ensure lang/ruby23-base
-  pkg ensure ruby23-gdbm databases/ruby-gdbm
-  pkg ensure ruby23-readline devel/ruby-readline
+  pkg ensure lang/ruby${RUBY_VERSION}-base
+  pkg ensure ruby${RUBY_VERSION}-gdbm databases/ruby-gdbm
+  pkg ensure ruby${RUBY_VERSION}-readline devel/ruby-readline
   gem install bundler
 }
 

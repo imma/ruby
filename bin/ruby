@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 function main {
-  exec "${BASH_SOURCE##*/}"22 "$@"
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  exec "${BASH_SOURCE##*/}${RUBY_VERSION}" "$@"
 }
 
 main "$@"
