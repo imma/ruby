@@ -5,6 +5,7 @@ function _ruby_profile {
   PATH="$shome/bin:$shome/exec:$PATH"
 
   RUBY_VERSION='23'
+  BUNDLER_VERSION='1.15.1'
 }
 
 _ruby_profile

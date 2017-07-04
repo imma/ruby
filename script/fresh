@@ -8,7 +8,7 @@ function main {
     return 1
   fi
 
-  if [[ !  -x "$(which bundle 2>/dev/null || true)" ]]; then
+  if [[ "$($shome/script/version | jq -r '.bundler')" != "$BUNDLER_VERSION" ]]; then
     return 1
   fi
 
