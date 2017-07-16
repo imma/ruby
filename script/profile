@@ -4,7 +4,7 @@ function _ruby_profile {
   local shome="${_ruby_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
 
-  RUBY_VERSION='23'
+  RUBY_VERSION='24'
   BUNDLER_VERSION='1.15.1'
 }
 
