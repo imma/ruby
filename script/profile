@@ -3,6 +3,7 @@
 function _ruby_profile {
   local shome="${_ruby_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
+  PATH="${BOARD_PATH}/.rbenv/shims:$PATH"
 
   RUBY_VERSION='23'
   BUNDLER_VERSION='1.15.3'
