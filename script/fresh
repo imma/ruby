@@ -4,10 +4,6 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if type -P rbenv >/dev/null; then
-    return 0
-  fi
-
   if [[ !  -x "$(which "ruby${RUBY_VERSION}" 2>/dev/null || true)" ]]; then
     return 1
   fi
