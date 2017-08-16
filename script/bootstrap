@@ -7,6 +7,11 @@ function bootstrap {
   pkg ensure lang/ruby${RUBY_VERSION}-base
   pkg ensure ruby${RUBY_VERSION}-gdbm databases/ruby-gdbm
   pkg ensure ruby${RUBY_VERSION}-readline devel/ruby-readline
+
+  pkg ensure devel/pkgconf
+  pkg ensure textproc/libxslt
+  pkg ensure textproc/libxml2
+
   gem install bundler --conservative -v "${BUNDLER_VERSION}"
 
   bundle config build.nokogiri --use-system-libraries --with-xml2-config="$(which xml2-config)" --with-xslt-config="$(which xslt-config)"
