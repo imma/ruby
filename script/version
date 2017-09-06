@@ -5,11 +5,13 @@ function version {
   source "$shome/script/profile"
 
   local ver_ruby="$(ruby --version 2>/dev/null | awk 'NR == 1 {print $2}')"
+  local ver_gem="$(gem --version 2>/dev/null | awk 'NR == 1 {print $1}' | sed 's#^v##')"
   local ver_bundler="$(bundle --version 2>/dev/null | awk 'NR == 1 {print $3}')"
   jq -n \
     --arg ruby "$ver_ruby" \
+    --arg gem "$ver_gem" \
     --arg bundler "$ver_bundler" \
-    '{ruby: $ruby, bundler: $bundler}'
+    '{ruby: $ruby, gem: $gem, bundler: $bundler}'
 }
 
 version "$@"

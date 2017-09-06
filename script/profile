@@ -6,6 +6,7 @@ function _ruby_profile {
   PATH="${BOARD_PATH}/.rbenv/shims:$PATH"
 
   RUBY_VERSION='23'
+  GEM_VERSION='2.6.13'
   export BUNDLER_VERSION='1.15.3'
 }
 
