@@ -12,8 +12,7 @@ function bootstrap {
   pkg ensure textproc/libxslt
   pkg ensure textproc/libxml2
 
-  gem install bundler --conservative -v "${BUNDLER_VERSION}"
-  gem update --system
+  block compile rbenv
 
   bundle config build.nokogiri --use-system-libraries --with-xml2-config="$(which xml2-config)" --with-xslt-config="$(which xslt-config)"
   ln -nfs libxml2/libxml "$PKG_HOME/install/include/libxml"
