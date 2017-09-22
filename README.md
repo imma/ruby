@@ -1,1 +1,1 @@
-Visit http://defn.sh/ruby/ or open `docs/index.html`
+content/ruby.md
