@@ -4,6 +4,8 @@ function _ruby_profile {
   local shome="${_ruby_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
   PATH="${BOARD_PATH}/.rbenv/shims:$PATH"
+
+  export BUNDLE_DISABLE_VERSION_CHECK=1
 }
 
 _ruby_profile
