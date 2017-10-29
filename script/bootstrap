@@ -4,10 +4,6 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  pkg ensure lang/ruby${RUBY_VERSION}-base
-  pkg ensure ruby${RUBY_VERSION}-gdbm databases/ruby-gdbm
-  pkg ensure ruby${RUBY_VERSION}-readline devel/ruby-readline
-
   pkg ensure devel/pkgconf
   pkg ensure textproc/libxslt
   pkg ensure textproc/libxml2
