@@ -4,7 +4,24 @@ function main {
   local phome="$1"; shift
   shift; shift
 
-  bundle --path "$phome/vendor/bundle" --binstubs "$phome/vendor/bundle/bin" "$@"
+  cd "$phome"
+  local nm_block="${phome##*/}"
+
+  if [[ ! -L Gemfile.lock ]]; then
+    rsync -ia Gemfile.lock "${BOARD_PATH}/Gemfile.lock.${nm_block}" 2>/dev/null || true # TODO clean up
+  fi
+  ln -nfs "${BOARD_PATH}/Gemfile.lock.${nm_block}" "Gemfile.lock"
+
+  if [[ "$#" == 0 ]]; then
+    set -- install --path "$phome/vendor/bundle" --binstubs "$phome/vendor/bundle/bin" "$@"
+  fi
+
+  bundle "$@"
+
+  if [[ ! -L Gemfile.lock ]]; then
+    rsync -ia Gemfile.lock "${BOARD_PATH}/Gemfile.lock.${nm_block}"
+  fi
+  ln -nfs "${BOARD_PATH}/Gemfile.lock.${nm_block}" "Gemfile.lock"
 }
 
 source sub "$0" "$@"
