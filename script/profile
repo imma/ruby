@@ -6,6 +6,7 @@ function _ruby_profile {
   PATH="${BOARD_PATH}/.rbenv/shims:$PATH"
 
   export BUNDLE_DISABLE_VERSION_CHECK=1
+  export BUNDLE_GLOBAL_GEM_CACHE="${DATA}/cache/gem"
 }
 
 _ruby_profile
