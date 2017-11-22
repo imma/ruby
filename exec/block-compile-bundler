@@ -16,7 +16,7 @@ function main {
     set -- install --path "$phome/vendor/bundle" --binstubs "$phome/vendor/bundle/bin" "$@"
   fi
 
-  bundle "$@"
+  bundle "$@" --no-prune
 
   if [[ ! -L Gemfile.lock ]]; then
     rsync -ia Gemfile.lock "${BOARD_PATH}/Gemfile.lock.${nm_block}"
