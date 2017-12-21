@@ -7,10 +7,9 @@ function main {
   cd "$phome"
   local nm_block="${phome##*/}"
 
-  if [[ ! -L Gemfile.lock ]]; then
-    rsync -ia Gemfile.lock "${BOARD_PATH}/Gemfile.lock.${nm_block}" 2>/dev/null || true # TODO clean up
+  if [[ -f "${BOARD_PATH}/Gemfile.lock.${nm_block}" ]]; then
+    ln -nfs "${BOARD_PATH}/Gemfile.lock.${nm_block}" "Gemfile.lock"
   fi
-  ln -nfs "${BOARD_PATH}/Gemfile.lock.${nm_block}" "Gemfile.lock"
 
   if [[ "$#" == 0 ]]; then
     set -- install --deployment --local --binstubs "$phome/vendor/bundle/bin" "$@"
