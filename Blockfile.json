@@ -4,7 +4,7 @@
     "rbenv"
   ],
   "versions": {
-    "gems": "rubygems/rubygems",
+    "gem": "rubygems/rubygems",
     "bundler": "bundler/bundler",
     "ruby": "ruby/ruby/2_3_"
   }
