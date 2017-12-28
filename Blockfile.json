@@ -3,5 +3,8 @@
     "pkgsrc",
     "rbenv"
   ],
-  "versions": {}
+  "versions": {
+    "gems": "rubygems/rubygems",
+    "bundler": "bundler/bundler"
+  }
 }
