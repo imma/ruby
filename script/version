@@ -4,7 +4,7 @@ function version {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_ruby="$(ruby --version 2>/dev/null | awk 'NR == 1 {print $2}')"
+  local ver_ruby="$(ruby --version 2>/dev/null | awk 'NR == 1 {print $2}' | cut -dp -f1 | sed "s#\.#_#g")"
   local ver_gem="$(gem --version 2>/dev/null | awk 'NR == 1 {print $1}' | sed 's#^v##')"
   local ver_bundler="$(bundle --version 2>/dev/null | awk 'NR == 1 {print $3}')"
   jq -n \

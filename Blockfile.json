@@ -5,6 +5,7 @@
   ],
   "versions": {
     "gems": "rubygems/rubygems",
-    "bundler": "bundler/bundler"
+    "bundler": "bundler/bundler",
+    "ruby": "ruby/ruby/2_3_"
   }
 }
