@@ -15,7 +15,13 @@ function main {
     set -- install --deployment --local --binstubs "$phome/vendor/bundle/bin" "$@"
   fi
 
-  bundle "$@"
+  if [[ "${1:-}" == "update" ]]; then
+    bundle install --no-deployment || true
+    bundle install
+    bundle install --deployment --local --binstubs "$phome/vendor/bundle/bin"
+  else
+    bundle "$@"
+  fi
 
   if [[ ! -L Gemfile.lock ]]; then
     rsync -ia Gemfile.lock "${BOARD_PATH}/Gemfile.lock.${nm_block}"
