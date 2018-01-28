@@ -17,10 +17,10 @@ function main {
 
   if [[ "${1:-}" == "update" ]]; then
     bundle install --no-deployment || true
-    bundle install
+    bundle update
     bundle install --deployment --local --binstubs "$phome/vendor/bundle/bin"
   else
-    bundle "$@"
+    bundle "$@" || { bundle install --no-deployment || true; bundle "$@"; }
   fi
 
   if [[ ! -L Gemfile.lock ]]; then
