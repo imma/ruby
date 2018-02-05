@@ -14,7 +14,7 @@ function main {
   set -x
 
   if [[ "$#" == 0 ]]; then
-    set -- install --local --path "$phome/vendor" --binstubs "$phome/vendor/bundle/bin" "$@"
+    set -- install --path "$phome/vendor" --binstubs "$phome/vendor/bundle/bin" "$@"
   fi
 
   if [[ "${1:-}" == "update" ]]; then
