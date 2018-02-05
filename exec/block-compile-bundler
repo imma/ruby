@@ -11,16 +11,16 @@ function main {
     ln -nfs "${BOARD_PATH}/Gemfile.lock.${nm_block}" "Gemfile.lock"
   fi
 
+  set -x
+
   if [[ "$#" == 0 ]]; then
-    set -- install --deployment --local --binstubs "$phome/vendor/bundle/bin" "$@"
+    set -- install --local --path "$phome/vendor" --binstubs "$phome/vendor/bundle/bin" "$@"
   fi
 
   if [[ "${1:-}" == "update" ]]; then
-    bundle install --no-deployment || true
     bundle update
-    bundle install --deployment --local --binstubs "$phome/vendor/bundle/bin"
   else
-    bundle "$@" || { bundle install --no-deployment || true; bundle "$@"; }
+    bundle "$@"
   fi
 
   if [[ ! -L Gemfile.lock ]]; then
