@@ -4,6 +4,8 @@ function main {
   local phome="$1"; shift
   shift; shift
 
+  unset BUNDLER_ORIG_BUNDLE_GEMFILE GEM_HOME BUNDLE_GEMFILE
+
   cd "$phome"
   local nm_block="${phome##*/}"
 
